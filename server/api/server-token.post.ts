@@ -24,8 +24,6 @@ export default defineEventHandler(async (event) => {
     try {
         const token = await getServerToken(event);
 
-        console.warn('🚀 🚀 🚀 🚀 🚀 ~ [server-token API] token:', token);
-
         if (!token) {
             console.error('[server-token API] No token available');
 
