@@ -99,7 +99,7 @@ export const useAuthentication = () => {
      * @returns {Promise<void>} - A promise that resolves once the logout process is complete.
      */
     async function logout(): Promise<void> {
-        const callbackURL = `${window.location.origin}/auth/logout`;
+        const callbackURL = `${window.location.origin}/`;
 
         try {
             // Get the logout URL without exposing tokens to client
