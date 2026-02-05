@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { computed } from 'vue';
 import { useUserStore } from '/stores/user';
+import { useApplicationStore } from '/stores/app';
 
 const route = useRoute();
 const userStore = useUserStore();
+const appStore = useApplicationStore();
 
 const items = computed(() => [
     {
@@ -25,7 +27,15 @@ const items = computed(() => [
     },
 ]);
 
-const { login, logout, register, isAuthenticated } = useAuthentication();
+const { login, logout, register } = useAuthentication();
+
+// Prefer SSR-aware isAuthenticated from appStore, fallback to Pinia userStore
+const isAuthenticated = computed(() => {
+    if (typeof appStore.ssrAuthInfo?.isAuthenticated === 'boolean') {
+        return appStore.ssrAuthInfo.isAuthenticated;
+    }
+    return userStore.isLoggedIn;
+});
 
 function handleLogin() {
     login();
@@ -38,10 +48,6 @@ function handleLogout() {
 function handleRegister() {
     register();
 }
-
-onMounted(() => {
-    userStore.fetchUserState();
-});
 </script>
 
 <template>
@@ -57,10 +63,7 @@ onMounted(() => {
 
         <template #right>
             <UColorModeButton />
-            <template v-if="userStore.user === undefined">
-                <USkeleton class="w-24 h-8" />
-            </template>
-            <template v-else-if="!isAuthenticated">
+            <template v-if="!isAuthenticated">
                 <UButton icon="i-lucide-log-in" color="neutral" variant="ghost" class="lg:hidden" @click="handleLogin" />
                 <UButton label="Sign in" color="neutral" variant="outline" class="hidden lg:inline-flex" @click="handleLogin" />
                 <UButton
@@ -80,16 +83,10 @@ onMounted(() => {
             <UNavigationMenu :items="items" orientation="vertical" class="-mx-2.5" />
             <USeparator class="my-6" />
             <UButton v-if="userStore.user === undefined" label="..." color="neutral" variant="subtle" block class="mb-3" disabled />
-            <UButton
-                v-else-if="!isAuthenticated"
-                label="Sign in"
-                color="neutral"
-                variant="subtle"
-                @click="handleLogin"
-                block
-                class="mb-3"
-            />
-            <UButton v-else-if="!isAuthenticated" label="Sign up" color="neutral" @click="handleRegister" block />
+            <template v-else-if="!isAuthenticated">
+                <UButton label="Sign in" color="neutral" variant="subtle" @click="handleLogin" block class="mb-3" />
+                <UButton label="Sign up" color="neutral" @click="handleRegister" block />
+            </template>
         </template>
     </UHeader>
 </template>
