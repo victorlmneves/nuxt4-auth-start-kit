@@ -1,0 +1,41 @@
+@import 'tailwindcss';
+@import '@nuxt/ui';
+
+@source "../../../content/**/*";
+
+@theme static {
+    --font-sans: 'Public Sans', sans-serif;
+
+    --color-green-50: #effdf5;
+    --color-green-100: #d9fbe8;
+    --color-green-200: #b3f5d1;
+    --color-green-300: #75edae;
+    --color-green-400: #00dc82;
+    --color-green-500: #00c16a;
+    --color-green-600: #00a155;
+    --color-green-700: #007f45;
+    --color-green-800: #016538;
+    --color-green-900: #0a5331;
+    --color-green-950: #052e16;
+}
+
+.dark {
+    --ui-bg: var(--ui-color-neutral-950);
+    --ui-bg-muted: var(--ui-color-neutral-900);
+    --ui-bg-elevated: var(--ui-color-neutral-900);
+    --ui-bg-accented: var(--ui-color-neutral-800);
+}
+
+/* BEM classes for 404 page using Tailwind @apply */
+.error404 {
+    @apply flex flex-col items-center justify-center py-24;
+}
+.error404__title {
+    @apply text-7xl font-extrabold text-gray-800 dark:text-white mb-4;
+}
+.error404__message {
+    @apply text-2xl text-gray-600 dark:text-gray-300 mb-8;
+}
+.error404__link {
+    @apply px-6 py-2 bg-primary-600 text-white rounded hover:bg-primary-700 transition no-underline;
+}
