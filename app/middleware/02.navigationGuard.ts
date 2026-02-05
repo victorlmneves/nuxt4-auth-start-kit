@@ -1,4 +1,4 @@
-import { resolveSafeRedirectPath } from '@/server/utils/urls';
+import { resolveSafeRedirectPath } from '~/server/utils/urls';
 
 export default defineNuxtRouteMiddleware(async (to) => {
     // Skip this middleware for unrestricted routes

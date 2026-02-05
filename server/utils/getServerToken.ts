@@ -1,6 +1,6 @@
 import { getToken } from '#auth';
 import type { H3Event } from 'h3';
-import { refreshToken } from './refreshToken';
+import { refreshToken } from '~/server/utils/refreshToken';
 
 export async function getServerToken(event: H3Event) {
     try {

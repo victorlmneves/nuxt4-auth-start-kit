@@ -62,7 +62,7 @@ export default defineNuxtConfig({
         dirs: ['src/stores'],
     },
 
-    css: ['~/assets/css/main.css'],
+    css: ['~/app/assets/css/main.css'],
 
     routeRules: {
         '/': {
@@ -77,7 +77,7 @@ export default defineNuxtConfig({
     auth: { ...sidebaseConfig },
 
     alias: {
-        '@': path.resolve(__dirname, './'),
+        '~': path.resolve(__dirname, './'),
     },
 
     runtimeConfig: {
@@ -94,6 +94,9 @@ export default defineNuxtConfig({
     },
 
     nitro: {
+        alias: {
+            '~': path.resolve(__dirname, './'),
+        },
         prerender: {
             routes: ['/'],
             crawlLinks: true,

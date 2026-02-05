@@ -4,7 +4,7 @@
  * Prevents open-redirects by only allowing same-origin paths in the `redirect` query param.
  * If the param is unsafe, users will be sent to `/` (customer portal).
  */
-import { resolveSafeRedirectPath } from '@/server/utils/urls';
+import { resolveSafeRedirectPath } from '~/server/utils/urls';
 
 export default defineEventHandler(async (event) => {
     const origin = getRequestURL(event).origin;

@@ -1,5 +1,5 @@
 import { defineEventHandler, getRequestHeaders } from 'h3';
-import { persistNextAuthRefresh } from '@/server/utils/persistNextAuthRefresh';
+import { persistNextAuthRefresh } from '~/server/utils/persistNextAuthRefresh';
 
 // AttemptBody variants intentionally omitted; persistence handled by helper
 export default defineEventHandler(async (event) => {

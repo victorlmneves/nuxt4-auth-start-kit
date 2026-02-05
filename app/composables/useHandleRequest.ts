@@ -1,6 +1,6 @@
 import { useNProgress } from '@vueuse/integrations/useNProgress';
 import type { FetchOptions, FetchResponse } from 'ofetch';
-import { useApplicationStore } from '~/stores/app';
+import { useApplicationStore } from '~/app/stores/app';
 
 interface INuxtWindow extends Window {
     __NUXT__?: Record<string, unknown> | Record<string, Record<string, unknown>>;

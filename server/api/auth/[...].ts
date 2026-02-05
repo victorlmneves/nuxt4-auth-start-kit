@@ -1,6 +1,6 @@
 import { NuxtAuthHandler } from '#auth';
 import Auth0Provider from 'next-auth/providers/auth0';
-import { refreshToken } from '@/server/utils/refreshToken';
+import { refreshToken } from '~/server/utils/refreshToken';
 import type { Session } from 'next-auth';
 
 interface ICustomSession extends Session {

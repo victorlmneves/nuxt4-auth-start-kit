@@ -1,7 +1,7 @@
 import { appendHeader, getCookie, getRequestHeaders, getRequestURL } from 'h3';
 import type { H3Event } from 'h3';
 import { ofetch } from 'ofetch';
-import { buildAuthCookieHeader } from '@/server/utils/buildAuthCookieHeader';
+import { buildAuthCookieHeader } from '~/server/utils/buildAuthCookieHeader';
 
 /**
  * Calls NextAuth's session update endpoint to persist refreshed tokens into browser cookies

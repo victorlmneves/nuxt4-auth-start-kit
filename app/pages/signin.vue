@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { definePageMeta, useSeoMeta, useRoute } from '#imports';
 import { useRouter } from 'vue-router';
-import { useAuthentication } from '../composables/useAuthentication';
-import { useUserStore } from '../stores/user';
+import { useAuthentication } from '~/app/composables/useAuthentication';
+import { useUserStore } from '~/app/stores/user';
 
 definePageMeta({ layout: 'auth' });
 useSeoMeta({ title: 'Sign in - MyApp', description: 'Sign in to your account' });

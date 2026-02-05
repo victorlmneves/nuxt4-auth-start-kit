@@ -2,10 +2,10 @@ import { useState } from '#imports';
 import type { RouteLocationNormalized } from '#vue-router';
 import type { UserData, AppMetadata, UserMetadata } from 'auth0';
 
-import { useApplicationStore } from '~/stores/app';
-import { useNavigationStore } from '~/stores/navigation';
-import { useUserStore } from '~/stores/user';
-import type { ISession, IToken } from '~/types/session';
+import { useApplicationStore } from '~/app/stores/app';
+import { useNavigationStore } from '~/app/stores/navigation';
+import { useUserStore } from '~/app/stores/user';
+import type { ISession, IToken } from '~/app/types/session';
 
 const isDevelopment = process.env.NODE_ENV === 'development';
 

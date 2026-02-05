@@ -1,4 +1,4 @@
-import { getServerToken } from '@/server/utils/getServerToken';
+import { getServerToken } from '~/server/utils/getServerToken';
 
 export default defineEventHandler(async (event) => {
     // Accept a force-refresh signal via header or body

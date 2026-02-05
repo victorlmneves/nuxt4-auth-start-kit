@@ -1,9 +1,9 @@
 import type { Session } from 'next-auth';
 import { computed } from '#imports';
 import { useRoute } from 'vue-router';
-import { useUserStore } from '~/stores/user';
-import { useHandleRequest } from '~/composables/useHandleRequest';
-import { resolveSafeRedirectPath } from '@/server/utils/urls';
+import { useUserStore } from '~/app/stores/user';
+import { useHandleRequest } from '~/app/composables/useHandleRequest';
+import { resolveSafeRedirectPath } from '~/server/utils/urls';
 
 type UserState = {
     isLoggedIn: boolean;
